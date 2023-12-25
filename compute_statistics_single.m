@@ -1,11 +1,11 @@
-theta = pi/2;
+theta = pi/4;
 mu = 0;
 sigma = .1;
 k = 0;
 omega = 2;
 time = 2;
-N = 2;
-mesh = .1;
+N = 200;
+mesh = .01;
 step = 1/mesh;
 L = 1;
 
@@ -44,8 +44,12 @@ times = (0:mesh:time);
 
 mu_phi = zeros(1,time/mesh+1);
 mu_psi = zeros(1,time/mesh+1);
+mu_alice = zeros(1,time/mesh+1);
+mu_alice_2 = zeros(1,time/mesh+1);
+fun = zeros(1,time/mesh+1);
 
 for t = 1:time/mesh+1
+    t
     mu_phi(t) = j0(abs(phiMinus(times(t),-L,theta,sigma,k,mu,omega,step)).^2,abs(phiPlus(times(t),-L,theta,sigma,k,mu,omega,step)).^2)+j0(abs(phiMinus(times(t),L,theta,sigma,k,mu,omega,step)).^2,abs(phiPlus(times(t),L,theta,sigma,k,mu,omega,step)).^2);
     mu_psi(t) = j0(abs(psiMinus(times(t),-L,theta,sigma,k,mu,omega,L,step)).^2,abs(psiPlus(times(t),-L,theta,sigma,k,mu,omega,L,step)).^2)+j0(abs(psiMinus(times(t),L,theta,sigma,k,mu,omega,L,step)).^2,abs(psiPlus(times(t),L,theta,sigma,k,mu,omega,L,step)).^2);
 end

@@ -43,6 +43,7 @@ cdfplot(yy_free);
 hold on;
 cdfplot(yy_boundary);
 hold on;
+xlabel('Time','Fontsize',20)
 title('Cumulative distribution of detection times');
 xlim([0 time])
 ylim([0 1])
@@ -57,6 +58,7 @@ histogram(yy_free);
 hold on;
 histogram(yy_boundary);
 hold on;
+xlabel('Time','Fontsize',20)
 title('Histogram of detection times');
 xlim([0 time])
 legend({'free evolution','with boundary condition'},'Location','southwest');
@@ -71,6 +73,7 @@ hold on;
 plot(times,mu_psi);
 hold on;
 xlim([0 time])
+xlabel('Time','Fontsize',20)
 title('Probability density function of detection time')
 legend({'free evolution','with boundary condition'},'Location','southwest');
 xlimits=xlim;
@@ -84,6 +87,7 @@ hold on;
 plot(times,cumtrapz(times,mu_psi));
 hold on;
 xlim([0 time])
+xlabel('Time','Fontsize',20)
 title('Cumulative distribution function of detection time')
 legend({'free evolution','with boundary condition'},'Location','southwest');
 xlimits=xlim;

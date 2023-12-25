@@ -155,6 +155,7 @@ cdfplot(yy_phi_pure_A_shifted);
 hold on
 cdfplot(yy_phi_pure_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Cumulative distribution of arrival time for pure product without boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast');
 xlim([0 time])
@@ -173,6 +174,7 @@ cdfplot(yy_phi_entangled_A_shifted);
 hold on
 cdfplot(yy_phi_entangled_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Cumulative distribution of arrival time for entangled pair without boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast');
 xlim([0 time])
@@ -191,6 +193,7 @@ cdfplot(yy_psi_pure_A_shifted);
 hold on
 cdfplot(yy_psi_pure_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Cumulative distribution of arrival time for pure product with boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast');
 xlim([0 time])
@@ -209,6 +212,7 @@ cdfplot(yy_psi_entangled_A_shifted);
 hold on
 cdfplot(yy_psi_entangled_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Cumulative distribution of arrival time for entangled pair with boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast');
 xlim([0 time])
@@ -227,6 +231,7 @@ histogram(yy_phi_pure_A_shifted);
 hold on
 histogram(yy_phi_pure_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Histogram of arrival time for pure product without boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -244,6 +249,7 @@ histogram(yy_phi_entangled_A_shifted);
 hold on
 histogram(yy_phi_entangled_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Histogram of arrival time for entangled pair without boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -261,6 +267,7 @@ histogram(yy_psi_pure_A_shifted);
 hold on
 histogram(yy_psi_pure_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Histogram of arrival time for pure product with boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -278,6 +285,7 @@ histogram(yy_psi_entangled_A_shifted);
 hold on
 histogram(yy_psi_entangled_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Histogram of arrival time for entangled pair with boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -295,6 +303,7 @@ plot(times,mu_phi_pure_A_shifted);
 hold on
 plot(times,mu_phi_pure_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Probability density function of arrival times for pure product without boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -312,6 +321,7 @@ plot(times,mu_phi_entangled_A_shifted);
 hold on
 plot(times,mu_phi_entangled_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Probability density function of arrival times for entangled pair without boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -329,6 +339,7 @@ plot(times,mu_phi_pure_A_shifted);
 hold on
 plot(times,mu_phi_pure_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Probability density function of arrival times for pure product with boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
@@ -346,6 +357,7 @@ plot(times,mu_phi_entangled_A_shifted);
 hold on
 plot(times,mu_phi_entangled_B_shifted);
 hold on
+xlabel('Time','Fontsize',20)
 title('Probability density function of arrival times for entangled pair with boundary condition');
 legend('Alice','Bob','Alice shifted','Bob shifted','Location','southeast','fontsize',12);
 xlim([0 time])
