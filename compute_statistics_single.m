@@ -6,7 +6,7 @@ omega = 2;
 time = 2;
 N = 200;
 mesh = .01;
-step = 1/mesh;
+step = min(10/mesh,10);
 L = 1;
 
 times = (0:mesh:time)+1e-6;

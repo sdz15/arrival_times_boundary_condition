@@ -2,9 +2,6 @@ txt = {strcat('theta=',string(theta)),strcat('mu=',string(mu)),strcat('sigma=',s
 
 figure(1)
 hold on;
-xlabel('Position','FontSize',20);
-ylabel('Time','FontSize',20);
-title('Trajectories');
 xlim([-L,L])
 ylim([0 time])
 
@@ -16,6 +13,9 @@ for x=1:N
     drawnow
 end
 
+xlabel('Position','FontSize',20);
+ylabel('Time','FontSize',20);
+title('Trajectories');
 legend({'free evolution','with boundary condition'},'Location','southwest');
 xlimits=xlim;
 ylimits=ylim;

@@ -9,16 +9,16 @@ k_2 = 0;
 omega = 2;
 L = 1;
 time = 2;
-N = 1;
-mesh = .1;
-step = 1/mesh;
+N = 200;
+mesh = .01;
+step = min(10/mesh,10);
 
 delta = .1;
 L1 = L+delta/2;
 mu_3 = mu_1-delta/2;
 mu_4 = mu_2-delta/2;
 
-times = (1e-1:mesh:time)+1e-6;
+times = (0:mesh:time)+1e-6;
 
 initvals = initialvals([sigma_1,sigma_2],[mu_1,mu_2],N,2);
 initvals_shifted = initialvals([sigma_1,sigma_2],[mu_3,mu_4],N,2);
@@ -94,23 +94,23 @@ for x=1:N
     traj_psi_entangled_shifted_1(:,x) = qq_psi_entangled_shifted(:,1);
     traj_psi_entangled_shifted_2(:,x) = qq_psi_entangled_shifted(:,2); 
 
-    f_phi_pure_A = min([find(traj_phi_pure_1(:,1)<=-L,1) find(traj_phi_pure_2(:,1)<=-L,1)]);
-    f_phi_pure_B = min([find(traj_phi_pure_1(:,1)>=L,1) find(traj_phi_pure_2(:,1)>=L,1)]); 
-    f_phi_entangled_A = min([find(traj_phi_entangled_1(:,1)<=-L,1) find(traj_phi_entangled_2(:,1)<=-L,1)]);
-    f_phi_entangled_B = min([find(traj_phi_entangled_1(:,1)>=L,1) find(traj_phi_entangled_2(:,1)>=L,1)]); 
-    f_psi_pure_A = min([find(traj_psi_pure_1(:,1)<=-L,1) find(traj_psi_pure_2(:,1)<=-L,1)]);
-    f_psi_pure_B = min([find(traj_psi_pure_1(:,1)>=L,1) find(traj_psi_pure_2(:,1)>=L,1)]); 
-    f_psi_entangled_A = min([find(traj_psi_entangled_1(:,1)<=-L,1) find(traj_psi_entangled_2(:,1)<=-L,1)]);
-    f_psi_entangled_B = min([find(traj_psi_entangled_1(:,1)>=L,1) find(traj_psi_entangled_2(:,1)>=L,1)]); 
+    f_phi_pure_A = min([find(traj_phi_pure_1(:,x)<=-L,1) find(traj_phi_pure_2(:,x)<=-L,1)]);
+    f_phi_pure_B = min([find(traj_phi_pure_1(:,x)>=L,1) find(traj_phi_pure_2(:,x)>=L,1)]); 
+    f_phi_entangled_A = min([find(traj_phi_entangled_1(:,x)<=-L,1) find(traj_phi_entangled_2(:,x)<=-L,1)]);
+    f_phi_entangled_B = min([find(traj_phi_entangled_1(:,x)>=L,1) find(traj_phi_entangled_2(:,x)>=L,1)]); 
+    f_psi_pure_A = min([find(traj_psi_pure_1(:,x)<=-L,1) find(traj_psi_pure_2(:,x)<=-L,1)]);
+    f_psi_pure_B = min([find(traj_psi_pure_1(:,x)>=L,1) find(traj_psi_pure_2(:,x)>=L,1)]); 
+    f_psi_entangled_A = min([find(traj_psi_entangled_1(:,x)<=-L,1) find(traj_psi_entangled_2(:,x)<=-L,1)]);
+    f_psi_entangled_B = min([find(traj_psi_entangled_1(:,x)>=L,1) find(traj_psi_entangled_2(:,x)>=L,1)]); 
 
-    f_phi_pure_A_shifted = min([find(traj_phi_pure_shifted_1(:,1)<=-L,1) find(traj_phi_pure_shifted_2(:,1)<=-L,1)]);
-    f_phi_pure_B_shifted = min([find(traj_phi_pure_shifted_1(:,1)>=L,1) find(traj_phi_pure_shifted_2(:,1)>=L,1)]); 
-    f_phi_entangled_A_shifted = min([find(traj_phi_entangled_shifted_1(:,1)<=-L,1) find(traj_phi_entangled_shifted_2(:,1)<=-L,1)]);
-    f_phi_entangled_B_shifted = min([find(traj_phi_entangled_shifted_1(:,1)>=L,1) find(traj_phi_entangled_shifted_2(:,1)>=L,1)]); 
-    f_psi_pure_A_shifted = min([find(traj_psi_pure_shifted_1(:,1)<=-L,1) find(traj_psi_pure_shifted_2(:,1)<=-L,1)]);
-    f_psi_pure_B_shifted = min([find(traj_psi_pure_shifted_1(:,1)>=L,1) find(traj_psi_pure_shifted_2(:,1)>=L,1)]); 
-    f_psi_entangled_A_shifted = min([find(traj_psi_entangled_shifted_1(:,1)<=-L,1) find(traj_psi_entangled_shifted_2(:,1)<=-L,1)]);
-    f_psi_entangled_B_shifted = min([find(traj_psi_entangled_shifted_1(:,1)>=L,1) find(traj_psi_entangled_shifted_2(:,1)>=L,1)]); 
+    f_phi_pure_A_shifted = min([find(traj_phi_pure_shifted_1(:,x)<=-L,1) find(traj_phi_pure_shifted_2(:,x)<=-L,1)]);
+    f_phi_pure_B_shifted = min([find(traj_phi_pure_shifted_1(:,x)>=L,1) find(traj_phi_pure_shifted_2(:,x)>=L,1)]); 
+    f_phi_entangled_A_shifted = min([find(traj_phi_entangled_shifted_1(:,x)<=-L,1) find(traj_phi_entangled_shifted_2(:,x)<=-L,1)]);
+    f_phi_entangled_B_shifted = min([find(traj_phi_entangled_shifted_1(:,x)>=L,1) find(traj_phi_entangled_shifted_2(:,x)>=L,1)]); 
+    f_psi_pure_A_shifted = min([find(traj_psi_pure_shifted_1(:,x)<=-L,1) find(traj_psi_pure_shifted_2(:,x)<=-L,1)]);
+    f_psi_pure_B_shifted = min([find(traj_psi_pure_shifted_1(:,x)>=L,1) find(traj_psi_pure_shifted_2(:,x)>=L,1)]); 
+    f_psi_entangled_A_shifted = min([find(traj_psi_entangled_shifted_1(:,x)<=-L,1) find(traj_psi_entangled_shifted_2(:,x)<=-L,1)]);
+    f_psi_entangled_B_shifted = min([find(traj_psi_entangled_shifted_1(:,x)>=L,1) find(traj_psi_entangled_shifted_2(:,x)>=L,1)]); 
 
     if ~(isempty(f_phi_pure_A) || isempty(f_phi_pure_B))
         yy_phi_pure_A(x) = tt_phi_pure(f_phi_pure_A);
@@ -148,7 +148,6 @@ for x=1:N
 end
 
 space = (-L:mesh:L);
-times = (0:mesh:time);
 
 fun_phi_pure_A = zeros(time/mesh+1,2/mesh*L+1);
 fun_phi_pure_B = zeros(time/mesh+1,2/mesh*L+1); 
@@ -188,54 +187,59 @@ mu_psi_entangled_B_shifted = zeros(1,time/mesh+1);
 
 for t = 1:1/mesh*time+1
     t
+    phiMminL1 = phiMinus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,step);
+    phiMminL2 = phiMinus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,step);
+    phiPminL1 = phiPlus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,step);
+    phiPminL2 = phiPlus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,step);
+    phiMposL1 = phiMinus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,step);
+    phiMposL2 = phiMinus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,step);
+    phiPposL1 = phiPlus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,step);
+    phiPposL2 = phiPlus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,step);
+    psiMminL1 = psiMinus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
+    psiMminL2 = psiMinus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
+    psiPminL1 = psiPlus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
+    psiPminL2 = psiPlus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
+    psiMposL1 = psiMinus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
+    psiMposL2 = psiMinus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
+    psiPposL1 = psiPlus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
+    psiPposL2 = psiPlus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
+
+    phiMminL11 = phiMinus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,step);
+    phiMminL12 = phiMinus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,step);
+    phiPminL11 = phiPlus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,step);
+    phiPminL12 = phiPlus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,step);
+    phiMposL11 = phiMinus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,step);
+    phiMposL12 = phiMinus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,step);
+    phiPposL11 = phiPlus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,step);
+    phiPposL12 = phiPlus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,step);
+
+    psiMminL11 = psiMinus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
+    psiMminL12 = psiMinus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
+    psiPminL11 = psiPlus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
+    psiPminL12 = psiPlus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
+    psiMposL11 = psiMinus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
+    psiMposL12 = psiMinus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
+    psiPposL11 = psiPlus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
+    psiPposL12 = psiPlus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
+
     for s = 1:2/mesh*L+1
-        phiMminL1 = phiMinus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,step);
-        phiMminL2 = phiMinus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,step);
         phiMsp1 = phiMinus(times(t),space(s),theta_1,sigma_1,k_1,mu_1,omega,step);
         phiMsp2 = phiMinus(times(t),space(s),theta_2,sigma_2,k_2,mu_2,omega,step);
-        phiPminL1 = phiPlus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,step);
-        phiPminL2 = phiPlus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,step);
+
         phiPsp1 = phiPlus(times(t),space(s),theta_1,sigma_1,k_1,mu_1,omega,step);
         phiPsp2 = phiPlus(times(t),space(s),theta_2,sigma_2,k_2,mu_2,omega,step);
-        phiMposL1 = phiMinus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,step);
-        phiMposL2 = phiMinus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,step);
-        phiPposL1 = phiPlus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,step);
-        phiPposL2 = phiPlus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,step);
 
-        psiMminL1 = psiMinus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
-        psiMminL2 = psiMinus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
         psiMsp1 = psiMinus(times(t),space(s),theta_1,sigma_1,k_1,mu_1,omega,L,step);
         psiMsp2 = psiMinus(times(t),space(s),theta_2,sigma_2,k_2,mu_2,omega,L,step);
-        psiPminL1 = psiPlus(times(t),-L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
-        psiPminL2 = psiPlus(times(t),-L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
+
         psiPsp1 = psiPlus(times(t),space(s),theta_1,sigma_1,k_1,mu_1,omega,L,step);
         psiPsp2 = psiPlus(times(t),space(s),theta_2,sigma_2,k_2,mu_2,omega,L,step);
-        psiMposL1 = psiMinus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
-        psiMposL2 = psiMinus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
-        psiPposL1 = psiPlus(times(t),L,theta_1,sigma_1,k_1,mu_1,omega,L,step);
-        psiPposL2 = psiPlus(times(t),L,theta_2,sigma_2,k_2,mu_2,omega,L,step);
 
-        phiMminL11 = phiMinus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,step);
-        phiMminL12 = phiMinus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,step);
-        phiPminL11 = phiPlus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,step);
-        phiPminL12 = phiPlus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,step);
-        phiMposL11 = phiMinus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,step);
-        phiMposL12 = phiMinus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,step);
-        phiPposL11 = phiPlus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,step);
-        phiPposL12 = phiPlus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,step);
-
-        psiMminL11 = psiMinus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
-        psiMminL12 = psiMinus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
         psiMspL11 = psiMinus(times(t),space(s),theta_1,sigma_1,k_1,mu_3,omega,L1,step);
         psiMspL12 = psiMinus(times(t),space(s),theta_2,sigma_2,k_2,mu_4,omega,L1,step);
-        psiPminL11 = psiPlus(times(t),-L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
-        psiPminL12 = psiPlus(times(t),-L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
+
         psiPspL11 = psiPlus(times(t),space(s),theta_1,sigma_1,k_1,mu_3,omega,L1,step);
         psiPspL12 = psiPlus(times(t),space(s),theta_2,sigma_2,k_2,mu_4,omega,L1,step);
-        psiMposL11 = psiMinus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
-        psiMposL12 = psiMinus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
-        psiPposL11 = psiPlus(times(t),L1,theta_1,sigma_1,k_1,mu_3,omega,L1,step);
-        psiPposL12 = psiPlus(times(t),L1,theta_2,sigma_2,k_2,mu_4,omega,L1,step);
 
         arr_phi_j10_A = velocity_twobody_helper(phiMminL1,phiMminL2,phiMsp1,phiMsp2,phiPminL1,phiPminL2,phiPsp1,phiPsp2);
         arr_phi_j01_A = velocity_twobody_helper(phiMsp1,phiMsp2,phiMminL1,phiMminL2,phiPsp1,phiPsp2,phiPminL1,phiPminL2);
@@ -257,23 +261,23 @@ for t = 1:1/mesh*time+1
         arr_psi_shifted_j10_B = velocity_twobody_helper(psiMposL11,psiMposL12,psiMspL11,psiMspL12,psiPposL11,psiPposL12,psiPspL11,psiPspL12);
         arr_psi_shifted_j01_B = velocity_twobody_helper(psiMspL11,psiMspL12,psiMposL11,psiMposL12,psiPspL11,psiPspL12,psiPposL11,psiPposL12);
 
-        fun_phi_pure_A(t,s) = j10(arr_phi_j10_A(5),arr_phi_j10_A(6),arr_phi_j10_A(7),arr_phi_j10_A(8))+j01(arr_phi_j01_A(5),arr_phi_j01_A(6),arr_phi_j01_A(7),arr_phi_j01_A(8));
-        fun_phi_pure_B(t,s) = j10(arr_phi_j10_B(5),arr_phi_j10_B(6),arr_phi_j10_B(7),arr_phi_j10_B(8))+j01(arr_phi_j01_B(5),arr_phi_j01_B(6),arr_phi_j01_B(7),arr_phi_j01_B(8));
-        fun_phi_entangled_A(t,s) = j10(arr_phi_j10_A(1),arr_phi_j10_A(2),arr_phi_j10_A(3),arr_phi_j10_A(4))+j01(arr_phi_j01_A(1),arr_phi_j01_A(2),arr_phi_j01_A(3),arr_phi_j01_A(4));
-        fun_phi_entangled_B(t,s) = j10(arr_phi_j10_B(1),arr_phi_j10_B(2),arr_phi_j10_B(3),arr_phi_j10_B(4))+j01(arr_phi_j01_B(1),arr_phi_j01_B(2),arr_phi_j01_B(3),arr_phi_j01_B(4));
-        fun_psi_pure_A(t,s) = j10(arr_psi_j10_A(5),arr_psi_j10_A(6),arr_psi_j10_A(7),arr_psi_j10_A(8))+j01(arr_psi_j01_A(5),arr_psi_j01_A(6),arr_psi_j01_A(7),arr_psi_j01_A(8));
-        fun_psi_pure_B(t,s) = j10(arr_psi_j10_B(5),arr_psi_j10_B(6),arr_psi_j10_B(7),arr_psi_j10_B(8))+j01(arr_psi_j01_B(5),arr_psi_j01_B(6),arr_psi_j01_B(7),arr_psi_j01_B(8));
-        fun_psi_entangled_A(t,s) = j10(arr_psi_j10_A(1),arr_psi_j10_A(2),arr_psi_j10_A(3),arr_psi_j10_A(4))+j01(arr_psi_j01_A(1),arr_psi_j01_A(2),arr_psi_j01_A(3),arr_psi_j01_A(4));
-        fun_psi_entangled_B(t,s) = j10(arr_psi_j10_B(1),arr_psi_j10_B(2),arr_psi_j10_B(3),arr_psi_j10_B(4))+j01(arr_psi_j01_B(1),arr_psi_j01_B(2),arr_psi_j01_B(3),arr_psi_j01_B(4));
+        fun_phi_pure_A(t,s) = (j10(arr_phi_j10_A(5),arr_phi_j10_A(6),arr_phi_j10_A(7),arr_phi_j10_A(8))+j01(arr_phi_j01_A(5),arr_phi_j01_A(6),arr_phi_j01_A(7),arr_phi_j01_A(8)));
+        fun_phi_pure_B(t,s) = (j10(arr_phi_j10_B(5),arr_phi_j10_B(6),arr_phi_j10_B(7),arr_phi_j10_B(8))+j01(arr_phi_j01_B(5),arr_phi_j01_B(6),arr_phi_j01_B(7),arr_phi_j01_B(8)));
+        fun_phi_entangled_A(t,s) = (j10(arr_phi_j10_A(1),arr_phi_j10_A(2),arr_phi_j10_A(3),arr_phi_j10_A(4))+j01(arr_phi_j01_A(1),arr_phi_j01_A(2),arr_phi_j01_A(3),arr_phi_j01_A(4)));
+        fun_phi_entangled_B(t,s) = (j10(arr_phi_j10_B(1),arr_phi_j10_B(2),arr_phi_j10_B(3),arr_phi_j10_B(4))+j01(arr_phi_j01_B(1),arr_phi_j01_B(2),arr_phi_j01_B(3),arr_phi_j01_B(4)));
+        fun_psi_pure_A(t,s) = (j10(arr_psi_j10_A(5),arr_psi_j10_A(6),arr_psi_j10_A(7),arr_psi_j10_A(8))+j01(arr_psi_j01_A(5),arr_psi_j01_A(6),arr_psi_j01_A(7),arr_psi_j01_A(8)));
+        fun_psi_pure_B(t,s) = (j10(arr_psi_j10_B(5),arr_psi_j10_B(6),arr_psi_j10_B(7),arr_psi_j10_B(8))+j01(arr_psi_j01_B(5),arr_psi_j01_B(6),arr_psi_j01_B(7),arr_psi_j01_B(8)));
+        fun_psi_entangled_A(t,s) = (j10(arr_psi_j10_A(1),arr_psi_j10_A(2),arr_psi_j10_A(3),arr_psi_j10_A(4))+j01(arr_psi_j01_A(1),arr_psi_j01_A(2),arr_psi_j01_A(3),arr_psi_j01_A(4)));
+        fun_psi_entangled_B(t,s) = (j10(arr_psi_j10_B(1),arr_psi_j10_B(2),arr_psi_j10_B(3),arr_psi_j10_B(4))+j01(arr_psi_j01_B(1),arr_psi_j01_B(2),arr_psi_j01_B(3),arr_psi_j01_B(4)));
 
-        fun_phi_pure_A_shifted(t,s) = j10(arr_phi_shifted_j10_A(5),arr_phi_shifted_j10_A(6),arr_phi_shifted_j10_A(7),arr_phi_shifted_j10_A(8))+j01(arr_phi_shifted_j01_A(5),arr_phi_shifted_j01_A(6),arr_phi_shifted_j01_A(7),arr_phi_shifted_j01_A(8));
-        fun_phi_pure_B_shifted(t,s) = j10(arr_phi_shifted_j10_B(5),arr_phi_shifted_j10_B(6),arr_phi_shifted_j10_B(7),arr_phi_shifted_j10_B(8))+j01(arr_phi_shifted_j01_B(5),arr_phi_shifted_j01_B(6),arr_phi_shifted_j01_B(7),arr_phi_shifted_j01_B(8));
-        fun_phi_entangled_A_shifted(t,s) = j10(arr_phi_shifted_j10_A(1),arr_phi_shifted_j10_A(2),arr_phi_shifted_j10_A(3),arr_phi_shifted_j10_A(4))+j01(arr_phi_shifted_j01_A(1),arr_phi_shifted_j01_A(2),arr_phi_shifted_j01_A(3),arr_phi_shifted_j01_A(4));
-        fun_phi_entangled_B_shifted(t,s) = j10(arr_phi_shifted_j10_B(1),arr_phi_shifted_j10_B(2),arr_phi_shifted_j10_B(3),arr_phi_shifted_j10_B(4))+j01(arr_phi_shifted_j01_B(1),arr_phi_shifted_j01_B(2),arr_phi_shifted_j01_B(3),arr_phi_shifted_j01_B(4));
-        fun_psi_pure_A_shifted(t,s) = j10(arr_psi_shifted_j10_A(5),arr_psi_shifted_j10_A(6),arr_psi_shifted_j10_A(7),arr_psi_shifted_j10_A(8))+j01(arr_psi_shifted_j01_A(5),arr_psi_shifted_j01_A(6),arr_psi_shifted_j01_A(7),arr_psi_shifted_j01_A(8));
-        fun_psi_pure_B_shifted(t,s) = j10(arr_psi_shifted_j10_B(5),arr_psi_shifted_j10_B(6),arr_psi_shifted_j10_B(7),arr_psi_shifted_j10_B(8))+j01(arr_psi_shifted_j01_B(5),arr_psi_shifted_j01_B(6),arr_psi_shifted_j01_B(7),arr_psi_shifted_j01_B(8));
-        fun_psi_entangled_A_shifted(t,s) = j10(arr_psi_shifted_j10_A(1),arr_psi_shifted_j10_A(2),arr_psi_shifted_j10_A(3),arr_psi_shifted_j10_A(4))+j01(arr_psi_shifted_j01_A(1),arr_psi_shifted_j01_A(2),arr_psi_shifted_j01_A(3),arr_psi_shifted_j01_A(4));
-        fun_psi_entangled_B_shifted(t,s) = j10(arr_psi_shifted_j10_B(1),arr_psi_shifted_j10_B(2),arr_psi_shifted_j10_B(3),arr_psi_shifted_j10_B(4))+j01(arr_psi_shifted_j01_B(1),arr_psi_shifted_j01_B(2),arr_psi_shifted_j01_B(3),arr_psi_shifted_j01_B(4));
+        fun_phi_pure_A_shifted(t,s) = (j10(arr_phi_shifted_j10_A(5),arr_phi_shifted_j10_A(6),arr_phi_shifted_j10_A(7),arr_phi_shifted_j10_A(8))+j01(arr_phi_shifted_j01_A(5),arr_phi_shifted_j01_A(6),arr_phi_shifted_j01_A(7),arr_phi_shifted_j01_A(8)));
+        fun_phi_pure_B_shifted(t,s) = (j10(arr_phi_shifted_j10_B(5),arr_phi_shifted_j10_B(6),arr_phi_shifted_j10_B(7),arr_phi_shifted_j10_B(8))+j01(arr_phi_shifted_j01_B(5),arr_phi_shifted_j01_B(6),arr_phi_shifted_j01_B(7),arr_phi_shifted_j01_B(8)));
+        fun_phi_entangled_A_shifted(t,s) = (j10(arr_phi_shifted_j10_A(1),arr_phi_shifted_j10_A(2),arr_phi_shifted_j10_A(3),arr_phi_shifted_j10_A(4))+j01(arr_phi_shifted_j01_A(1),arr_phi_shifted_j01_A(2),arr_phi_shifted_j01_A(3),arr_phi_shifted_j01_A(4)));
+        fun_phi_entangled_B_shifted(t,s) = (j10(arr_phi_shifted_j10_B(1),arr_phi_shifted_j10_B(2),arr_phi_shifted_j10_B(3),arr_phi_shifted_j10_B(4))+j01(arr_phi_shifted_j01_B(1),arr_phi_shifted_j01_B(2),arr_phi_shifted_j01_B(3),arr_phi_shifted_j01_B(4)));
+        fun_psi_pure_A_shifted(t,s) = (j10(arr_psi_shifted_j10_A(5),arr_psi_shifted_j10_A(6),arr_psi_shifted_j10_A(7),arr_psi_shifted_j10_A(8))+j01(arr_psi_shifted_j01_A(5),arr_psi_shifted_j01_A(6),arr_psi_shifted_j01_A(7),arr_psi_shifted_j01_A(8)));
+        fun_psi_pure_B_shifted(t,s) = (j10(arr_psi_shifted_j10_B(5),arr_psi_shifted_j10_B(6),arr_psi_shifted_j10_B(7),arr_psi_shifted_j10_B(8))+j01(arr_psi_shifted_j01_B(5),arr_psi_shifted_j01_B(6),arr_psi_shifted_j01_B(7),arr_psi_shifted_j01_B(8)));
+        fun_psi_entangled_A_shifted(t,s) = (j10(arr_psi_shifted_j10_A(1),arr_psi_shifted_j10_A(2),arr_psi_shifted_j10_A(3),arr_psi_shifted_j10_A(4))+j01(arr_psi_shifted_j01_A(1),arr_psi_shifted_j01_A(2),arr_psi_shifted_j01_A(3),arr_psi_shifted_j01_A(4)));
+        fun_psi_entangled_B_shifted(t,s) = (j10(arr_psi_shifted_j10_B(1),arr_psi_shifted_j10_B(2),arr_psi_shifted_j10_B(3),arr_psi_shifted_j10_B(4))+j01(arr_psi_shifted_j01_B(1),arr_psi_shifted_j01_B(2),arr_psi_shifted_j01_B(3),arr_psi_shifted_j01_B(4)));
     end
 
     mu_phi_pure_A(t) = trapz(-fun_phi_pure_A(t,:))*mesh;
