@@ -11,7 +11,7 @@ L = 1;
 time = 2;
 N = 200;
 mesh = .01;
-step = min(10/mesh,10);
+step = 1/mesh;
 
 delta = .1;
 L1 = L+delta/2;
