@@ -1,4 +1,4 @@
-txt = {strcat('theta\_1=',string(theta_1)),strcat('theta\_2=',string(theta_2)),strcat('mu\_1=',string(mu_1)),strcat('mu\_2=',string(mu_2)),strcat('sigma\_1=',string(sigma_1)),strcat('sigma\_2=',string(sigma_2)),strcat('k\_1=',string(k_1)),strcat('k\_2=',string(k_2)),strcat('omega=',string(omega)),strcat('L=',string(L))};
+txt = {strcat('theta\_1=',string(theta_1)),strcat('theta\_2=',string(theta_2)),strcat('mu\_1=',string(mu_1)),strcat('mu\_2=',string(mu_2)),strcat('alpha\_1=',string(sigma_1)),strcat('alpha\_2=',string(sigma_2)),strcat('k\_1=',string(k_1)),strcat('k\_2=',string(k_2)),strcat('omega=',string(omega)),strcat('L=',string(L))};
 
 figure(1)
 hold on;

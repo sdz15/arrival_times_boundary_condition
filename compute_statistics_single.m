@@ -1,10 +1,10 @@
 theta = pi/4;
 mu = 0;
-sigma = .005;
+alpha = .005;
 k = 0;
 omega = 2;
 time = 2;
-N = 200;
+N = 1000;
 mesh = .01;
 step = 1/mesh;
 L = 1;
@@ -18,12 +18,12 @@ traj_free = Inf(N,ode_num);
 traj_boundary = Inf(N,ode_num);
 
 % Generating initial data
-q0 = initialvals(sigma,mu,N,1);
+q0 = initialvals(alpha,mu,N,1);
 
 for x=1:N
     x
-    [tt_free,qq_free] = ode45(@(t,q) velocity_single_electron(abs(phiMinus(t,q,theta,sigma,k,mu,omega,step)).^2,abs(phiPlus(t,q,theta,sigma,k,mu,omega,step)).^2),times,q0(x)); % Free evolution
-    [tt_boundary,qq_boundary] = ode45(@(t,q) velocity_single_electron(abs(psiMinus(t,q,theta,sigma,k,mu,omega,L,step)).^2,abs(psiPlus(t,q,theta,sigma,k,mu,omega,L,step)).^2),times,q0(x)); % Boundary condition
+    [tt_free,qq_free] = ode45(@(t,q) velocity_single_electron(abs(phiMinus(t,q,theta,alpha,k,mu,omega,step)).^2,abs(phiPlus(t,q,theta,alpha,k,mu,omega,step)).^2),times,q0(x)); % Free evolution
+    [tt_boundary,qq_boundary] = ode45(@(t,q) velocity_single_electron(abs(psiMinus(t,q,theta,alpha,k,mu,omega,L,step)).^2,abs(psiPlus(t,q,theta,alpha,k,mu,omega,L,step)).^2),times,q0(x)); % Boundary condition
 
     traj_free(x,:) = qq_free;
     traj_boundary(x,:) = qq_boundary;
@@ -43,9 +43,8 @@ mu_phi = zeros(1,time/mesh+1);
 mu_psi = zeros(1,time/mesh+1);
 
 for t = 1:time/mesh+1
-    t
-    mu_phi(t) = 2*(j1(abs(phiMinus(times(t),L,theta,sigma,k,mu,omega,step)).^2,abs(phiPlus(times(t),L,theta,sigma,k,mu,omega,step)).^2)-j1(abs(phiMinus(times(t),-L,theta,sigma,k,mu,omega,step)).^2,abs(phiPlus(times(t),-L,theta,sigma,k,mu,omega,step)).^2));
-    mu_psi(t) = abs(psiMinus(times(t),L,theta,sigma,k,mu,omega,L,step)).^2+abs(psiPlus(times(t),-L,theta,sigma,k,mu,omega,L,step)).^2;
+    mu_phi(t) = 2*(j1(abs(phiMinus(times(t),L,theta,alpha,k,mu,omega,step)).^2,abs(phiPlus(times(t),L,theta,alpha,k,mu,omega,step)).^2)-j1(abs(phiMinus(times(t),-L,theta,alpha,k,mu,omega,step)).^2,abs(phiPlus(times(t),-L,theta,alpha,k,mu,omega,step)).^2));
+    mu_psi(t) = abs(psiMinus(times(t),L,theta,alpha,k,mu,omega,L,step)).^2+abs(psiPlus(times(t),-L,theta,alpha,k,mu,omega,L,step)).^2;
 end
 
 % TO PLOT THE STATISTICS, GO TO PLOT_STATISTICS_SINGLE.M
